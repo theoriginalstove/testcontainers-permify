@@ -1,0 +1,22 @@
+run:
+  concurrency: 4
+
+  timeout: 30s
+
+  issues-exit-code: 2
+
+  tests: true
+  # List of build tags, all linters use it.
+  # Default: [].
+  build-tags: [ ]
+
+  skip-dirs-use-default: false
+
+
+  #  skip-files:
+  #    - ".*\\.gen\\.go$"
+
+  modules-download-mode: readonly
+
+  allow-parallel-runners: true
+  go: '1.22'
