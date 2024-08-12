@@ -4,18 +4,35 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main, "**"]
+
+concurrency:
+  group: ${{ github.workflow}}-${{ github.head_ref || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Go
-        uses: actions/setup-go@v4
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: set up go
+        uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
-      - name: go mod download
+          go-version-file: './go.mod'
+          cache-dependency-path: './go.sum'
+        id: go
+
+      - name: mod verify
+        run: go mod verify
+
+      - name: mod download
         run: go mod download
-      - name: Test
+
+      - name: ensure compilation
+        run: go build
+
+      - name: test
         run: go test ./... -v -cover -race
 
