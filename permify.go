@@ -48,15 +48,6 @@ func Run(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*Perm
 	return &PermifyContainer{Container: container}, nil
 }
 
-// RESTPort returns the port which the Rest API for Permify is listening on.
-func (p PermifyContainer) RESTPort(ctx context.Context) (int, error) {
-	port, err := p.MappedPort(ctx, permifyRestPort)
-	if err != nil {
-		return 0, err
-	}
-	return port.Int(), nil
-}
-
 // GRPCPort returns the port which the GRPC API for Permify is listening on.
 func (p PermifyContainer) GRPCPort(ctx context.Context) (int, error) {
 	port, err := p.MappedPort(ctx, permifyGrpcPort)

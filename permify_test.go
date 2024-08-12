@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-func TestRunContainer(t *testing.T) {
+func TestRun(t *testing.T) {
 	ctx := context.Background()
 
 	container, err := Run(ctx)
@@ -27,6 +27,7 @@ func TestRunContainer(t *testing.T) {
 
 	grpcPort, err := container.GRPCPort(ctx)
 	require.NoError(t, err, "failed to fetch permify grpc api port")
+	require.Equal(t, 3478, grpcPort, fmt.Sprintf("wanted grpc port 3478 got %d", grpcPort))
 
 	endpoint := fmt.Sprintf("%s:%d", host, grpcPort)
 	fmt.Printf("endpoint: %s\n", endpoint)
@@ -92,4 +93,22 @@ func TestRunContainer(t *testing.T) {
 	})
 	require.NoError(t, err, "failed to write relationships")
 	require.NotEmpty(t, relationship.SnapToken, "snap token was empty")
+}
+
+func TestGRPCPort(t *testing.T) {
+	ctx := context.Background()
+
+	container, err := Run(ctx)
+	require.NoError(t, err)
+	t.Cleanup(func() {
+		err = container.Terminate(ctx)
+		require.NoError(t, err, "failed to terminate container")
+	})
+
+	_, err = container.Host(ctx)
+	require.NoError(t, err, "failed to fetch permify host")
+
+	grpcPort, err := container.GRPCPort(ctx)
+	require.NoError(t, err, "failed to fetch permify grpc api port")
+	require.Equal(t, 3478, grpcPort, fmt.Sprintf("wanted grpc port 3478 got %d", grpcPort))
 }
