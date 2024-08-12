@@ -15,7 +15,7 @@ import (
 func TestRunContainer(t *testing.T) {
 	ctx := context.Background()
 
-	container, err := RunContainer(ctx)
+	container, err := Run(ctx)
 	require.NoError(t, err)
 	t.Cleanup(func() {
 		err = container.Terminate(ctx)
