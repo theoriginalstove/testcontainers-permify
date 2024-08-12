@@ -1,8 +1,19 @@
 module github.com/theoriginalstove/testcontainers-permify
 
-go 1.22.2
+go 1.22.6
 
 require (
+	buf.build/gen/go/permifyco/permify/protocolbuffers/go v1.34.2-20240722150440-5ee7aa4c5fb5.2
+	github.com/Permify/permify-go v0.4.9
+	github.com/stretchr/testify v1.9.0
+	github.com/testcontainers/testcontainers-go v0.32.0
+	google.golang.org/grpc v1.65.0
+)
+
+require (
+	buf.build/gen/go/envoyproxy/protoc-gen-validate/protocolbuffers/go v1.34.2-20221025150516-6607b10f00ed.2 // indirect
+	buf.build/gen/go/grpc-ecosystem/grpc-gateway/protocolbuffers/go v1.34.2-20221127060915-a1ecdc58eccd.2 // indirect
+	buf.build/gen/go/permifyco/permify/grpc/go v1.5.1-20240722150440-5ee7aa4c5fb5.1 // indirect
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
 	github.com/Microsoft/go-winio v0.6.2 // indirect
@@ -12,6 +23,7 @@ require (
 	github.com/containerd/errdefs v0.1.0 // indirect
 	github.com/containerd/log v0.1.0 // indirect
 	github.com/cpuguy83/dockercfg v0.3.1 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/distribution/reference v0.6.0 // indirect
 	github.com/docker/docker v27.0.3+incompatible // indirect
 	github.com/docker/go-connections v0.5.0 // indirect
@@ -21,7 +33,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/klauspost/compress v1.17.4 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
@@ -35,11 +46,11 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/shirou/gopsutil/v3 v3.23.12 // indirect
 	github.com/shoenig/go-m1cpu v0.1.6 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	github.com/testcontainers/testcontainers-go v0.32.0 // indirect
 	github.com/tklauser/go-sysconf v0.3.12 // indirect
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
@@ -47,9 +58,12 @@ require (
 	go.opentelemetry.io/otel v1.24.0 // indirect
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
-	golang.org/x/crypto v0.22.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20231016165738-49dd2c1f3d0b // indirect
-	google.golang.org/grpc v1.59.0 // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
+	golang.org/x/crypto v0.25.0 // indirect
+	golang.org/x/net v0.27.0 // indirect
+	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20240723171418-e6d459c13d2a // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240723171418-e6d459c13d2a // indirect
+	google.golang.org/protobuf v1.34.2 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
