@@ -28,8 +28,11 @@ func TestRunContainer(t *testing.T) {
 	grpcPort, err := container.GRPCPort(ctx)
 	require.NoError(t, err, "failed to fetch permify grpc api port")
 
+	endpoint := fmt.Sprintf("%s:%d", host, grpcPort)
+	fmt.Printf("endpoint: %s\n", endpoint)
+
 	client, err := permify_grpc.NewClient(permify_grpc.Config{
-		Endpoint: fmt.Sprintf("%s:%d", host, grpcPort),
+		Endpoint: endpoint,
 	}, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	require.NoError(t, err, "failed to initialize permify grpc clinet")
 
