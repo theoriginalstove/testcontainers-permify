@@ -8,9 +8,6 @@
 
 </div>
 
-# testcontainers-aerospike-go
-
-
 ## Install
 
 Use `go get` to install the latest version of the library.
