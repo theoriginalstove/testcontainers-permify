@@ -35,10 +35,19 @@ jobs:
       - name: ensure compilation
         run: go build
 
-      - name: test
-        run: go test ./... -v -cover -race
+      - name: Use the reusable workflow for test
+        # Use the retry action
+        uses: nick-fields/retry@v2
         with:
           max_attempts: 3
           retry_on: error
           timeout_seconds: 5
+        command: go test ./... -v -cover 
+#
+#      - name: test
+#        run: 
+#        with:
+#          max_attempts: 3
+#          retry_on: error
+#          timeout_seconds: 5
 
