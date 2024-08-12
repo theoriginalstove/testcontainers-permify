@@ -21,8 +21,8 @@ type PermifyContainer struct {
 	testcontainers.Container
 }
 
-// RunContainer creates an instance of the Permify container type.
-func RunContainer(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*PermifyContainer, error) {
+// Run creates an instance of the Permify container type.
+func Run(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*PermifyContainer, error) {
 	req := testcontainers.ContainerRequest{
 		Image:        fmt.Sprintf("%s:%s", defaultPermifyImage, defaultPermifyImageVersion),
 		ExposedPorts: []string{permifyRestPort, permifyGrpcPort},
