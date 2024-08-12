@@ -36,14 +36,14 @@ func TestPermify(t *testing.T) {
 func setupPermify(t *testing.T) *permify_gcpc.Client {
     ctx := context.Background()
 
-    container, err := permifytest.RunContainer(ctx)
+    container, err := permifytest.Run(ctx)
     require.NoError(t, err)
     t.Cleanup(func() {
         err := container.Terminate(ctx)
         require.NoError(t, err)
     })
 
-	container, err := RunContainer(ctx)
+	container, err := Run(ctx)
 	require.NoError(t, err)
 	t.Cleanup(func() {
 		err = container.Terminate(ctx)
