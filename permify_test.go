@@ -17,10 +17,6 @@ func TestRunContainer(t *testing.T) {
 
 	container, err := RunContainer(ctx)
 	require.NoError(t, err)
-	t.Cleanup(func() {
-		err = container.Terminate(ctx)
-		require.NoError(t, err, "failed to terminate container")
-	})
 
 	host, err := container.Host(ctx)
 	require.NoError(t, err, "failed to fetch permify host")
@@ -89,4 +85,9 @@ func TestRunContainer(t *testing.T) {
 	})
 	require.NoError(t, err, "failed to write relationships")
 	require.NotEmpty(t, relationship.SnapToken, "snap token was empty")
+
+	t.Cleanup(func() {
+		err = container.Terminate(ctx)
+		require.NoError(t, err, "failed to terminate container")
+	})
 }
