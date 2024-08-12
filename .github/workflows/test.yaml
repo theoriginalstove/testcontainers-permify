@@ -42,7 +42,7 @@ jobs:
           max_attempts: 3
           retry_on: error
           timeout_seconds: 5
-        command: go test ./... -v -cover 
+          command: go test ./... -v -cover 
 #
 #      - name: test
 #        run: 
