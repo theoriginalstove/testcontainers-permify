@@ -23,7 +23,7 @@ jobs:
           go-version-file: './go.mod'
           cache-dependency-path: './go.sum'
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v6
         with:
           version: v1.54
           args: --timeout=30m --config=.golangci.yaml --issues-exit-code=2 -v
