@@ -19,4 +19,4 @@ run:
   modules-download-mode: readonly
 
   allow-parallel-runners: true
-  go: '1.22'
+  go: '1.23'
