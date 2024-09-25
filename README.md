@@ -3,8 +3,7 @@
   "MD041": false
 } -->
 <div align="center">
-[![Test](https://github.com/theoriginalstove/testcontainers-permify/actions/workflows/test.yaml/badge.svg)](https://github.com/theoriginalstove/testcontainers-permify/actions/workflows/test.yaml)
-
+![Tests](https://github.com/theoriginalstove/testcontainers-permify/actions/workflows/test.yaml/badge.svg?event=push)
  
 # Permify Testcontainer - [testcontainers](https://www.testcontainers.org/) implementation for [Permify](https://permify.co)
 
