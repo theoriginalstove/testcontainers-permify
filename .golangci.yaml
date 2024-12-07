@@ -10,8 +10,7 @@ run:
   # Default: [].
   build-tags: [ ]
 
-  skip-dirs-use-default: false
-
+  issues.exclude-dirs-use-default: true
 
   #  skip-files:
   #    - ".*\\.gen\\.go$"
@@ -19,4 +18,4 @@ run:
   modules-download-mode: readonly
 
   allow-parallel-runners: true
-  go: '1.22'
+  go: '1.23'
