@@ -1,6 +1,6 @@
 module github.com/theoriginalstove/testcontainers-permify
 
-go 1.24.0
+go 1.23.6
 
 require (
 	buf.build/gen/go/permifyco/permify/protocolbuffers/go v1.34.2-20240722150440-5ee7aa4c5fb5.2
