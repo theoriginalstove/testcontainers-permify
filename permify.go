@@ -9,7 +9,7 @@ import (
 
 const (
 	defaultPermifyImage        = "ghcr.io/permify/permify"
-	defaultPermifyImageVersion = "v1.2.3"
+	defaultPermifyImageVersion = "v1.4.2"
 	permifyRestPort            = "3476/tcp"
 	permifyGrpcPort            = "3478/tcp"
 	permifyStartupCommand      = "serve"
