@@ -42,7 +42,15 @@ jobs:
       - name: Get current version
         id: current-version
         run: |
-          CURRENT_VERSION=$(grep -oP 'defaultPermifyImageVersion\s*=\s*"\K[^"]+' permify.go)
+          if [ ! -f permify.go ]; then
+            echo "Error: permify.go not found!" >&2
+            exit 1
+          fi
+          CURRENT_VERSION=$(awk -F'"' '/defaultPermifyImageVersion[[:space:]]*=[[:space:]]*"/ {print $2; exit}' permify.go)
+          if [ -z "$CURRENT_VERSION" ]; then
+            echo "Error: Could not extract current version from permify.go" >&2
+            exit 1
+          fi
           echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
           echo "Current version in code: $CURRENT_VERSION"
 
