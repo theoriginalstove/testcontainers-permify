@@ -15,10 +15,10 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: set up go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version-file: './go.mod'
           cache-dependency-path: './go.sum'
