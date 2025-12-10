@@ -1,19 +1,27 @@
+version: "2"
 run:
   concurrency: 4
-
-  timeout: 30s
-
-  issues-exit-code: 2
-
-  tests: true
-  # List of build tags, all linters use it.
-  # Default: [].
-  build-tags: [ ]
-
-  #  skip-files:
-  #    - ".*\\.gen\\.go$"
-
+  go: "1.25"
   modules-download-mode: readonly
-
+  issues-exit-code: 2
+  tests: true
   allow-parallel-runners: true
-  go: '1.23'
+linters:
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
