@@ -20,7 +20,22 @@ jobs:
       - name: Get latest Permify release
         id: latest-release
         run: |
-          LATEST_VERSION=$(curl -s https://api.github.com/repos/permify/permify/releases/latest | jq -r .tag_name)
+          API_URL="https://api.github.com/repos/permify/permify/releases/latest"
+          AUTH_HEADER="Authorization: Bearer $GITHUB_TOKEN"
+          RESPONSE=$(curl -s -w "%{http_code}" -H "$AUTH_HEADER" "$API_URL")
+          HTTP_STATUS="${RESPONSE: -3}"
+          BODY="${RESPONSE::-3}"
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "Error: GitHub API request failed with status $HTTP_STATUS"
+            echo "Response: $BODY"
+            exit 1
+          fi
+          LATEST_VERSION=$(echo "$BODY" | jq -r .tag_name)
+          if [ -z "$LATEST_VERSION" ] || [ "$LATEST_VERSION" = "null" ]; then
+            echo "Error: Could not extract latest version from GitHub API response."
+            echo "Response: $BODY"
+            exit 1
+          fi
           echo "version=$LATEST_VERSION" >> $GITHUB_OUTPUT
           echo "Latest Permify version: $LATEST_VERSION"
 
