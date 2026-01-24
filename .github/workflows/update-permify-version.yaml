@@ -21,8 +21,7 @@ jobs:
         id: latest-release
         run: |
           API_URL="https://api.github.com/repos/permify/permify/releases/latest"
-          AUTH_HEADER="Authorization: Bearer $GITHUB_TOKEN"
-          RESPONSE=$(curl -s -w "%{http_code}" -H "$AUTH_HEADER" "$API_URL")
+          RESPONSE=$(curl -s -w "%{http_code}" "$API_URL")
           HTTP_STATUS="${RESPONSE: -3}"
           BODY="${RESPONSE::-3}"
           if [ "$HTTP_STATUS" -ne 200 ]; then
