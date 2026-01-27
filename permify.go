@@ -3,8 +3,10 @@ package permify
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/testcontainers/testcontainers-go"
+	"github.com/testcontainers/testcontainers-go/wait"
 )
 
 const (
@@ -27,6 +29,10 @@ func Run(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*Perm
 		Image:        fmt.Sprintf("%s:%s", defaultPermifyImage, defaultPermifyImageVersion),
 		ExposedPorts: []string{permifyRestPort, permifyGrpcPort},
 		Cmd:          []string{permifyStartupCommand},
+		WaitingFor: wait.ForAll(
+			wait.ForLog("grpc server successfully started").WithStartupTimeout(30*time.Second),
+			wait.ForLog("http server successfully started").WithStartupTimeout(30*time.Second),
+		),
 	}
 
 	genericContainerReq := testcontainers.GenericContainerRequest{
